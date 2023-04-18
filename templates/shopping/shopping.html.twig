@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div id="vue-app">
+        test
+        {# L'appli Vue.js vivra ici #}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        {% if listId is defined %}
+        window.listId = '{{ listId|e('js') }}';
+        {% else %}
+        window.listId = null;
+        {% endif %}
+        {% if userId is defined %}
+        window.userId = '{{ userId|e('js') }}';
+        {% else %}
+        window.userId = null;
+        {% endif %}
+    </script>
+{% endblock %}
